@@ -2,10 +2,10 @@
   <img src="https://raw.githubusercontent.com/homebridge/branding/6ef3a1685e79f79a2ecdcc83824e53775ec0475d/logos/homebridge-wordmark-logo-horizontal.svg" width="500">
 </p>
 
-# homebridge-chromecast
-![npm](https://img.shields.io/npm/v/blat2512/homebridge-chromecast)
+# homebridge-cast
+![npm](https://img.shields.io/npm/v/homebridge-cast)
 
-Homebridge Chromecast is a [Homebridge](https://github.com/homebridge/homebridge) plugin for controlling Google TVs, Android TVs or any Google Cast devices.
+Homebridge Cast is a [Homebridge](https://github.com/homebridge/homebridge) plugin for controlling Google TVs, Android TVs or any Google Cast / Chromecast devices.
 
 For Google/Android TVs, a TV service is exposed allowing the device to be powered on/off, the current application to be viewed/changed and remote control from your phone in control centre.
 
@@ -14,13 +14,13 @@ For all devices, a light service can be exposed for controlling media streaming 
 A motion sensor service can also be exposed which becomes active when the Chromecast is streaming, useful for automations.
 
 # Installation
-Please ensure you are running the latest version of Homebridge (heres how to [install](https://github.com/homebridge/homebridge/wiki) if you haven't already). To install this plugin, go to the Homebridge web interface Plugins page and search for `Chromecast`. Alternatively, from command line run:
+Please ensure you are running the latest version of Homebridge (heres how to [install](https://github.com/homebridge/homebridge/wiki) if you haven't already). To install this plugin, go to the Homebridge web interface Plugins page and search for `Cast`. Alternatively, from command line run:
 ```
-npm i -g @blat2512/homebridge-chromecast
+npm i -g homebridge-cast
 ```
 
 # Setup
-Configure your devices in Homebridge Web Interface > Plugins > Homebridge Chromecast > Settings
+Configure your devices in Homebridge Web Interface > Plugins > Homebridge Cast > Settings
 
 Name or IP: The device name of your Chromecast (as seen in Google Home app) - or IP address if static
 
@@ -39,13 +39,13 @@ For Android/Google TVs, apps to show in Homekit can also be entered. Enter the a
 # TV Authentication
 For Android/Google TV types, you will need to obtain an authentication certificate using the included `certgen.js` script. This can be run with the following command from the command line:
 ```
-node $(npm root -g)/@blat2512/homebridge-chromecast/certgen.js
+node $(npm root -g)/homebridge-cast/certgen.js
 ```
 The script will prompt you to enter your device name, which should be the same as the Name set in the plugin config (the exact name of the device in the Google Home app).
 
 A code will then be displayed on your TV screen and the script will prompt you to enter it. It will then output the authentication certificate if successful.
 
-This should be copied into the config for the TV by  going to the Homebridge Web Interface > Plugins > Homebridge Chromecast > ... menu > JSON Config
+This should be copied into the config for the TV by  going to the Homebridge Web Interface > Plugins > Homebridge Cast > ... menu > JSON Config
 
 Within the JSON Config, find your device and paste the certificate as the `tvCert` property underneath the other properties (remove all the +s in the JSON output to create single string for the `key` and `cert`).
 
