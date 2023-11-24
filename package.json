@@ -1,16 +1,15 @@
 {
-  "private": true,
-  "displayName": "Plugin Name",
-  "name": "homebridge-plugin-name",
+  "displayName": "Homebridge Chromecast",
+  "name": "@blat2512/homebridge-chromecast",
   "version": "1.0.0",
-  "description": "A short description about what your plugin does.",
+  "description": "Homebridge plugin to control volume and media streaming status of Chromecasts",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/USERNAME/GITHUB_PROJECT_NAME.git"
+    "url": "https://github.com/blat2512/homebridge-chromecast.git"
   },
   "bugs": {
-    "url": "https://github.com/USERNAME/GITHUB_PROJECT_NAME/issues"
+    "url": "https://github.com/blat2512/homebridge-chromecast/issues"
   },
   "engines": {
     "node": "^18.17.0 || ^20.9.0",
@@ -24,16 +23,28 @@
     "prepublishOnly": "npm run lint && npm run build"
   },
   "keywords": [
-    "homebridge-plugin"
+    "homebridge-plugin",
+    "homekit",
+    "chromecast",
+    "cast",
+    "castv2",
+    "androidtv",
+    "googletv",
+    "tv-remote"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "androidtv-remote": "^1.0.10",
+    "castv2-client": "^1.2.0",
+    "mdns": "^2.7.2"
+  },
   "devDependencies": {
+    "@types/mdns": "^0.0.38",
     "@types/node": "^18.16.20",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "eslint": "^8.45.0",
     "homebridge": "^1.6.0",
-    "nodemon": "^2.0.22",
+    "nodemon": "^3.0.1",
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.5"

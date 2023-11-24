@@ -1,16 +1,135 @@
 {
-  "pluginAlias": "ExampleHomebridgePlugin",
+  "pluginAlias": "ChromecastPlugin",
   "pluginType": "platform",
-  "singular": true,
+  "singular": true,   
   "schema": {
     "type": "object",
     "properties": {
-      "name": {
-        "title": "Name",
-        "type": "string",
-        "required": true,
-        "default": "Example Dynamic Platform"
+      "devices": {
+        "type": "array",
+        "items": {
+          "title": "Chromecasts",
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Name or IP",
+              "type": "string",
+              "required": true,
+              "default": "Living Room",
+              "description": "The device name of your Chromecast (as seen in Google Home app) - or IP address if static"
+            },
+            "displayName": {
+              "title": "Display Name",
+              "type": "string",
+              "required": false,
+              "placeholder": "Living Room TV",
+              "description": "The display name for your Chromecast in Homebridge and the Home app (leave blank for same as above)"
+            },
+            "type": {
+              "title": "Device Type",
+              "type": "string",
+              "oneOf": [
+                { "title": "Chromecast Audio / Cast Audio Device", "enum": ["audio"] },
+                { "title": "Chromecast Streaming Stick (e.g. Google TV)", "enum": ["streamstick"] },
+                { "title": "Android TV", "enum": ["tv"] }
+              ],
+              "required": true,
+              "default": "audio"
+            },
+            "volumeService": {
+              "title": "Volume / Play-pause service",
+              "type": "boolean",
+              "required": true,
+              "default": true,
+              "description": "Expose a lightbulb for this device where the brightness corresponds to the device volume and on/off corresponds to play/pause"
+            },
+            "motionService": {
+              "title": "Streaming service",
+              "type": "boolean",
+              "required": true,
+              "default": false,
+              "description": "Expose a motion sensor for this device which is active when the device is streaming"
+            },
+            "tvApps": {
+              "type": "array",
+              "condition": {
+                "functionBody": "return model.devices[arrayIndices].type !== 'audio';"
+              },
+              "items": {
+                "title": "Apps",
+                "type": "object",
+                "properties": {
+                  "link": {
+                    "title": "App Link",
+                    "type": "string",
+                    "required": false,
+                    "placeholder": "https://www.netflix.com/title.*",
+                    "description": "The android manifest app link / deeplink for this app (required if you want to open the app from Homekit)"
+                  },
+                  "id": {
+                    "title": "App ID",
+                    "type": "string",
+                    "required": true,
+                    "default": "com.netflix.ninja",
+                    "description": "The android app bundle identifier"
+                  },
+                  "name": {
+                    "title": "Display Name",
+                    "type": "string",
+                    "required": true,
+                    "default": "Netflix",
+                    "description": "The display name to use for this app's input source in the Home app"
+                  }
+                }
+              }
+            },
+            "tvCert": {
+              "title": "TV Certificate",
+              "type": "object",
+              "required": false,
+              "properties": {
+                "key": {
+                  "title": "Private Key",
+                  "type": "string"
+                },
+                "cert": {
+                  "title": "Certificate",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
       }
     }
-  }
+  },
+  "layout": [
+    {
+      "key": "devices",
+      "type": "array",
+      "orderable": true,
+      "buttonText": "Add Chromecast",
+      "items": [
+        "devices[].name",
+        "devices[].displayName",
+        "devices[].type",
+        "devices[].volumeService",
+        "devices[].motionService",
+        {
+          "key": "devices[].tvApps",
+          "type": "array",
+          "title": "Apps",
+          "expandable": true,
+          "expanded": true,
+          "orderable": true,
+          "buttonText": "Add App",
+          "items": [
+            "devices[].tvApps[].link",
+            "devices[].tvApps[].id",
+            "devices[].tvApps[].name"
+          ]
+        }
+      ]
+    }
+  ]
 }
