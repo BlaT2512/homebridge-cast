@@ -1,11 +1,11 @@
 import { API } from 'homebridge';
 
 import { PLATFORM_NAME } from './settings';
-import { ChromecastHomebridgePlatform } from './platform';
+import { CastHomebridgePlatform } from './platform';
 
 /**
  * This method registers the platform with Homebridge
  */
 export = (api: API) => {
-  api.registerPlatform(PLATFORM_NAME, ChromecastHomebridgePlatform);
+  api.registerPlatform(PLATFORM_NAME, CastHomebridgePlatform);
 };

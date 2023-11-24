@@ -1,13 +1,13 @@
 import { Client, DefaultMediaReceiver } from 'castv2-client';
 import { AndroidRemote, RemoteKeyCode, RemoteDirection } from 'androidtv-remote';
 import { Service, PlatformAccessory, CharacteristicValue } from 'homebridge';
-import { ChromecastHomebridgePlatform } from './platform';
+import { CastHomebridgePlatform } from './platform';
 
 /**
- * Chromecast Platform Accessory
+ * Cast Platform Accessory
  * Connects to the Chromecast and exposes its services to Homebridge
  */
-export class ChromecastPlatformAccessory {
+export class CastPlatformAccessory {
   private tvService: Service | undefined;
   private tvSpeakerService: Service | undefined;
   private volumeService: Service | undefined;
@@ -32,7 +32,7 @@ export class ChromecastPlatformAccessory {
   private appIndex = 0;
 
   constructor (
-    private readonly platform: ChromecastHomebridgePlatform,
+    private readonly platform: CastHomebridgePlatform,
     private readonly accessory: PlatformAccessory,
   ) {
 

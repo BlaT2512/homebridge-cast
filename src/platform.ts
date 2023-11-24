@@ -1,17 +1,17 @@
 import mdns from 'mdns';
 import { API, DynamicPlatformPlugin, Logger, PlatformAccessory, PlatformConfig, Service, Characteristic, Categories } from 'homebridge';
 import { PLATFORM_NAME, PLUGIN_NAME } from './settings';
-import { ChromecastPlatformAccessory } from './platformAccessory';
+import { CastPlatformAccessory } from './platformAccessory';
 
 /**
- * Chromecast Homebridge Platform
- * Parses the user config and discovers/registers Chromecast accessories with Homebridge
+ * Cast Homebridge Platform
+ * Parses the user config and discovers/registers Google Cast accessories with Homebridge
  */
-export class ChromecastHomebridgePlatform implements DynamicPlatformPlugin {
+export class CastHomebridgePlatform implements DynamicPlatformPlugin {
   public readonly Service: typeof Service = this.api.hap.Service;
   public readonly Characteristic: typeof Characteristic = this.api.hap.Characteristic;
   public readonly accessories: PlatformAccessory[] = [];
-  private accessoryInstances: ChromecastPlatformAccessory[] = [];
+  private accessoryInstances: CastPlatformAccessory[] = [];
   private browser: mdns.Browser = mdns.createBrowser(mdns.tcp('googlecast'), { resolverSequence: [
     mdns.rst.DNSServiceResolve(),
     'DNSServiceGetAddrInfo' in mdns.dns_sd ? mdns.rst.DNSServiceGetAddrInfo() : mdns.rst.getaddrinfo({ families: [0] }),
@@ -72,7 +72,7 @@ export class ChromecastHomebridgePlatform implements DynamicPlatformPlugin {
           }
 
           // Create accessory handler and publish accessory
-          this.accessoryInstances.push(new ChromecastPlatformAccessory(this, accessory));
+          this.accessoryInstances.push(new CastPlatformAccessory(this, accessory));
           if (!existingAccessory && device.type === 'audio') {
             this.api.registerPlatformAccessories(PLUGIN_NAME, PLATFORM_NAME, [accessory]);
           } else if (!existingAccessory) {

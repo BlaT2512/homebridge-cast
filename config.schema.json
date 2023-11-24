@@ -1,7 +1,7 @@
 {
-  "pluginAlias": "ChromecastPlugin",
+  "pluginAlias": "GoogleCastPlugin",
   "pluginType": "platform",
-  "singular": true,   
+  "singular": true,
   "schema": {
     "type": "object",
     "properties": {

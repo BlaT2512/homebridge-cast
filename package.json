@@ -1,15 +1,15 @@
 {
-  "displayName": "Homebridge Chromecast",
-  "name": "@blat2512/homebridge-chromecast",
+  "displayName": "Homebridge Cast",
+  "name": "homebridge-cast",
   "version": "1.0.0",
-  "description": "Homebridge plugin to control volume and media streaming status of Chromecasts",
+  "description": "Homebridge plugin to control volume and media streaming status of Google Cast devices, and control Android/Google TVs using iOS remote",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/blat2512/homebridge-chromecast.git"
+    "url": "https://github.com/blat2512/homebridge-cast.git"
   },
   "bugs": {
-    "url": "https://github.com/blat2512/homebridge-chromecast/issues"
+    "url": "https://github.com/blat2512/homebridge-cast/issues"
   },
   "engines": {
     "node": "^18.17.0 || ^20.9.0",
@@ -26,6 +26,7 @@
     "homebridge-plugin",
     "homekit",
     "chromecast",
+    "google-cast",
     "cast",
     "castv2",
     "androidtv",
