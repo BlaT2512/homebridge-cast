@@ -28,7 +28,7 @@ Display Name: Optional different display name for your Chromecast in Homebridge 
 
 Device Type: Select Android TV for Android TVs, Chromecast Streaming Stick for Google TVs and Chromecast Audio for other Google Cast devices
 
-`Note: TV accessories must be added seperately in the Home app, remember to click Add Accessory > More Options in the Home app and add it after adding a Android/Google TV in the config`
+`Note: TV accessories must be added separately in the Home app, remember to click Add Accessory > More Options in the Home app and add it after adding a Android/Google TV in the config`
 
 Check on Volume Service and/or Streaming Service to expose a lightbulb for media/volume control and/or motion sensor for streaming status, respectively
 
@@ -47,7 +47,7 @@ A code will then be displayed on your TV screen and the script will prompt you t
 
 This should be copied into the config for the TV by  going to the Homebridge Web Interface > Plugins > Homebridge Chromecast > ... menu > JSON Config
 
-Within the JSON Config, find your device and paste the certificate as the `tvCert` property underneath the other properties.
+Within the JSON Config, find your device and paste the certificate as the `tvCert` property underneath the other properties (remove all the +s in the JSON output to create single string for the `key` and `cert`).
 
 An example Android/Google TV config:
 ```
@@ -78,3 +78,4 @@ An example Android/Google TV config:
     }
 }
 ```
+A custom settings UI for the Homebridge web interface will be coming soon to automatically configure TV accessories when added
