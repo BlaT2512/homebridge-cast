@@ -4,6 +4,7 @@
 
 # homebridge-cast
 ![npm](https://img.shields.io/npm/v/homebridge-cast)
+![npm](https://img.shields.io/npm/dt/homebridge-cast)
 
 Homebridge Cast is a [Homebridge](https://github.com/homebridge/homebridge) plugin for controlling Google TVs, Android TVs or any Google Cast / Chromecast devices.
 
